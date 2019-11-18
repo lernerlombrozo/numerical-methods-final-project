@@ -20,7 +20,7 @@ function makeCompositePlot(){
 
     // console.log(n)
     var table = makeCompositeTable(x0,x1,null,h,smallH,xT,yT,tT,sT)
-    console.log(table);
+    // console.log(table);
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable(table);
