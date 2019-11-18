@@ -1,0 +1,35 @@
+<html>
+    <head>
+    <title>Math 535 project</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="graphs.js" defer></script>
+    <script type="text/javascript" src="plots/plots.js" defer></script>
+    <script type="text/javascript" src="plots/composite.js" defer></script>
+    <link href="styles/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <div class="input_field">
+                <label>x0</label>
+                <input type="text" v-model="x0" placeholder="x0">
+            </div>
+            <div class="input_field">
+                <label>x1</label>
+                <input type="text" v-model="x1" placeholder="x1">
+            </div>
+            <div class="input_field">
+                <label>n</label>
+                <input type="text" v-model="n" placeholder="n">
+            </div>
+            <button v-on:click="makeCharts()">Calculate</button>
+            <div class="chart_container" v-if="!calculating">
+                <div id="chart_div" style="width: 700px; height: 700px;"></div>
+                <div id="composite_chart_div" style="width: 700px; height: 700px;"></div>
+            </div>
+        </div>
+        <div id="alert" v-if="seen">
+            {{ message }}
+        </div>
+    </body>
+</html>
