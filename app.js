@@ -40,8 +40,8 @@ var app = new Vue({
             xf = +this.xf;
             n = +this.n;
             h = ((xf-x0)/n);
-            degree1=+this.degree1,
-            degree2=+this.degree2,
+            degree1=+this.degree1;
+            degree2=+this.degree2;
             this.calculating = false;
             this.showMessage = false;
             if(n % degree1 == 0 && n % degree2 == 0){
