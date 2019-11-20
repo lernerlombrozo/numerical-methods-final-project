@@ -7,7 +7,7 @@ function makeCompositeTable(x1,x2,x3,h,smallH,xTitle,yTitle,tTitle,sTitle){
         let m = (y2-y1)/(xb-i);
         let b = y1 - m*i;
         for(let j = i;j<xb;j=j+smallH){
-            table.push([j,toSolve(j.toPrecision(7)),m*j+b,i])
+            table.push([j,toSolve(j.toPrecision(7)),m*j+b,lagrange(j,[x1,x2,x3])])
         }
     }
     return table;

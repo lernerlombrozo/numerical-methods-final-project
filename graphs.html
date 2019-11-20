@@ -3,6 +3,7 @@
     <title>Math 535 project</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="lagrange-polynomial.js" defer></script>
     <script type="text/javascript" src="graphs.js" defer></script>
     <script type="text/javascript" src="plots/plots.js" defer></script>
     <script type="text/javascript" src="plots/composite.js" defer></script>
@@ -11,15 +12,15 @@
     <body>
         <div id="app">
             <div class="input_field">
-                <label>x0</label>
+                <label>initial point (x0)</label>
                 <input type="text" v-model="x0" placeholder="x0">
             </div>
             <div class="input_field">
-                <label>x1</label>
-                <input type="text" v-model="x1" placeholder="x1">
+                <label>final point (xf)</label>
+                <input type="text" v-model="xf" placeholder="xf">
             </div>
             <div class="input_field">
-                <label>n</label>
+                <label>Division Amount (n)</label>
                 <input type="text" v-model="n" placeholder="n">
             </div>
             <button v-on:click="makeCharts()">Calculate</button>

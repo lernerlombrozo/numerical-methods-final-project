@@ -1,12 +1,17 @@
 let x0 = 0;
-let x1 = 1;
+let xf = 1; // last point
 let n = 4;
-let h = ((x1-x0)/n); // this h is the distance between two points.
+let h = ((xf-x0)/n); // this h is the distance between two points.
 const smallH = 0.001; // this h is for making the plot continuous.
 const xT="x";
 const yT= "f(x)";
 const tT="trapesoid";
 const sT="simpson's";
+
+function toSolve(x){
+  // return (Math.sqrt(1-x**2)) // Circle centered in (0,0) with radius 1. Can be evaluated from -1 to 1;
+  return (Math.exp(x))
+}
 
 var alert = new Vue({
     el: '#alert',
@@ -20,7 +25,7 @@ var app = new Vue({
     el: '#app',
     data: {
       x0: x0,
-      x1:x1,
+      xf:xf,
       n:n,
       calculating:false
     },
