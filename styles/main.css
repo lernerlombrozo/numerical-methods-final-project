@@ -8,7 +8,7 @@
 
 label{
     padding-right:10px;
-    width: 20px;
+    width: 20%;
 }
 
 input[type=text], select {
@@ -36,7 +36,7 @@ button:hover {
     background-color: #45a049;
 }
 
-#alert{
+.alert{
     position: fixed;
     width:100%;
     background-color: rgba(250,0,0);
@@ -46,7 +46,7 @@ button:hover {
     left:0px;
 }
 
-.chart_container{
+/* .chart_container{
     width:100%;
     display:flex;
-}
+} */

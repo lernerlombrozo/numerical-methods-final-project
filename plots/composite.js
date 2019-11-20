@@ -1,13 +1,9 @@
-function makeCompositeTable(x1,x2,x3,h,smallH,xTitle,yTitle,tTitle,sTitle){
+function makeCompositeTable(x0,xf,h,smallH,xTitle,yTitle,tTitle,sTitle){
     var table =[[xTitle, yTitle, tTitle, sTitle]];
-    for(let i = x1;i<x2;i=i+h){
+    for(let i = x0;i<xf;i=i+h){
         let xb = i+h;
-        let y1 = toSolve(i);
-        let y2 = toSolve(xb);
-        let m = (y2-y1)/(xb-i);
-        let b = y1 - m*i;
         for(let j = i;j<xb;j=j+smallH){
-            table.push([j,toSolve(j.toPrecision(7)),m*j+b,lagrange(j,[x1,x2,x3])])
+            table.push([j,toSolve(j.toPrecision(7)),lagrangeFromDegree(j,i,xb,degree1),lagrangeFromDegree(j,i,xb,degree2)])
         }
     }
     return table;
@@ -19,14 +15,14 @@ function makeCompositePlot(){
     google.charts.setOnLoadCallback(drawChart);
 
     // console.log(n)
-    var table = makeCompositeTable(x0,x1,null,h,smallH,xT,yT,tT,sT)
-    // console.log(table);
+    var table = makeCompositeTable(x0,xf,h,smallH,xT,yT,`n=${degree1}`,`n=${degree2}`)
+    console.log(table);
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable(table);
 
     var options = {
-        title: "Composite Trapezoidal Rule vs Simpson's 3/8 Rule",
+        title: `n=${degree1} and n=${degree2}`,
         hAxis: {title: xT,  titleTextStyle: {color: '#333'}},
         vAxis: {title: yT, minValue: 0}
     };

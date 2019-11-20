@@ -15,15 +15,19 @@ function lagrangeFromDataPoints(x,xl){
 }
 
 // n degree of polynomial
-function lagrangeFromDegree(x0,xf,n){
-    console.log('degree', n, x, xl)
+function lagrangeFromDegree(x,x0,xf,n){
+    let h = (xf-x0)/n
     let L = 0;
-    for (let j=0;j<n;j++){
+    let Cx = x0;
+    for (let j=0;j<=n;j++){
         let l = 1;
-        for (let i=0;i<n;i++){
-            if(i!=j)l=l*(x-xl[i])/(xl[j]-xl[i]);
+        let cx=x0;
+        for (let i=0;i<=n;i++){
+            if(i!=j)l=l*(x-cx)/(Cx-cx);
+            cx+=h;
         }
-        L+=(l*toSolve(xl[j]));
+        L+=(l*toSolve(Cx));
+        Cx+=h;
     }
     return L
 }
