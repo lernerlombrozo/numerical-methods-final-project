@@ -42,10 +42,35 @@
             <div class="centered">
                 {{toEvaluate}}
             </div>
-            <div class="chart_container" v-if="!calculating">
+            <div class="chart_container">
                 <div id="chart_div" style="width: 100%; height: 1000px;"></div>
                 <div id="composite_chart_div" style="width: 100%; height: 1000px;"></div>
                 <div id="composite_2_chart_div" style="width: 100%; height: 1000px;"></div>
+            </div>
+            <button v-if="!table1" v-on:click="makeTables()">Show tables</button>
+            <div class="table-container" v-if="table1">
+                <table style="width:100%">
+                    <caption>n=1</caption>
+                    <tr v-for="(row, index) in table1">
+                        <td v-for="(content, index) in row">{{content}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-container" v-if="table1">
+                <table style="width:100%">
+                    <caption>n=2</caption>
+                    <tr v-for="(row, index) in table2">
+                        <td v-for="(content, index) in row">{{content}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-container" v-if="table1">
+                <table style="width:100%">
+                    <caption>n=3</caption>
+                    <tr v-for="(row, index) in table3">
+                        <td v-for="(content, index) in row">{{content}}</td>
+                    </tr>
+                </table>
             </div>
             <div class="alert" v-if="message">
                     {{ message }}

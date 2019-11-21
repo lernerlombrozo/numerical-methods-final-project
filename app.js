@@ -27,13 +27,19 @@ var app = new Vue({
       n:n,
       degree1:degree1,
       degree2:degree2,
-      calculating:false,
       message: "",
       toEvaluate:"",
+      table1:null,
+      table2:null,
+      table3:null,
     },
     methods: {
+        makeTables: function(){
+          this.table1=compositeTrapezoidTable(x0,xf,h);
+          this.table2=compositeSimpsonTable(x0,xf,h);
+          this.table3=compositeSimpson38Table(x0,xf,h);
+        },
         makeCharts: function () {
-            this.calculating = true;
             x0 = +this.x0;
             xf = +this.xf;
             this.n=Math.round(+this.n)
@@ -41,7 +47,6 @@ var app = new Vue({
             h = ((xf-x0)/n);
             degree1=+this.degree1;
             degree2=+this.degree2;
-            this.calculating = false;
             this.message = "";
             toEvaluate=this.toEvaluate;
             if(toEvaluate) yT = "f(x)="+toEvaluate;
@@ -53,9 +58,10 @@ var app = new Vue({
               makeCompositePlot();
               makeCompositePlot2();
               makeSimplePlot();
+              this.makeTables();
             } else {
                 this.message = "n must be multiple of the all polynomials";
             }
-        }
+        },
       }
 })
