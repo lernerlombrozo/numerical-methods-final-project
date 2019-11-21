@@ -6,9 +6,13 @@ let degree1=2;
 let degree2=1;
 const smallH = 0.01; // this h is to make plot continuous.
 const xT="x";
-const yT= "f(x)";
+var yT= "f(x)";
+let toEvaluate="";
 
 function toSolve(x){
+  if(toEvaluate){
+    return(eval(toEvaluate)); 
+  }
   // return (Math.sqrt(1-x**2)) // Circle centered in (0,0) with radius 1. Can be evaluated from -1 to 1;
   return (Math.exp(x));
   // return x**3 + 3*x**2;
@@ -25,6 +29,7 @@ var app = new Vue({
       degree2:degree2,
       calculating:false,
       message: "",
+      toEvaluate:"",
     },
     methods: {
         makeCharts: function () {
@@ -38,6 +43,8 @@ var app = new Vue({
             degree2=+this.degree2;
             this.calculating = false;
             this.message = "";
+            toEvaluate=this.toEvaluate;
+            if(toEvaluate) yT = "f(x)="+toEvaluate;
             if(n <1){
               this.message="n must be a positive integer";
               return

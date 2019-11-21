@@ -46,6 +46,11 @@ button:hover {
     left:0px;
 }
 
+.centered{
+    width:100%;
+    text-align: center;
+}
+
 /* .chart_container{
     width:100%;
     display:flex;
