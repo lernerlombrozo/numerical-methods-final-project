@@ -1,6 +1,6 @@
-function efficientTable(x0,xf,h,xTitle,yTitle,tTitle,sTitle){
+function efficientTable(x0,xf,smallH,xTitle,yTitle,tTitle,sTitle){
     var table =[[xTitle, yTitle, tTitle, sTitle]];
-    for(let i = x0;i<=xf+h;i=i+h){
+    for(let i = x0;i<=xf+smallH;i=i+smallH){
         table.push([i,toSolve(i.toPrecision(7)),lagrangeFromDegree(i,x0,xf,degree1),lagrangeFromDegree(i,x0,xf,degree2)])
     }
     return table;
@@ -24,7 +24,6 @@ function makeSimplePlot(){
         };
 
         if(!simpleChart){
-            console.log('here')
             simpleChart = new google.visualization.AreaChart(document.getElementById('chart_div'));
         }
         simpleChart.draw(data, options);

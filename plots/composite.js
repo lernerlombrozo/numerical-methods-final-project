@@ -1,5 +1,4 @@
 function makeCompositeTable(x0,xf,h,degree,smallH,xTitle,yTitle,pTitle){
-    console.log(x0,xf,h,degree,smallH,xTitle,yTitle,pTitle);
     var table =[[xTitle, yTitle, pTitle]];
     for(let i = x0;i<xf;i=i+h){
         let xb = i+h;
@@ -15,7 +14,6 @@ function makeCompositePlot(){
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
-    // console.log(n)
     var table = makeCompositeTable(x0,xf,h,degree1, smallH,xT,yT,`n=${degree1}`)
     // console.log(table);
 
@@ -40,9 +38,8 @@ function makeCompositePlot2(){
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
-    // console.log(n)
     var table = makeCompositeTable(x0,xf,h,degree2,smallH,xT,yT,`n=${degree2}`)
-    console.log(table);
+    // console.log(table);
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable(table);

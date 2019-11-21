@@ -2,7 +2,6 @@
 // xl list of xi
 function lagrangeFromDataPoints(x,xl){
     let n = xl.length; // degree of polynomial
-    console.log('degree', n, x, xl)
     let L = 0;
     for (let j=0;j<n;j++){
         let l = 1;
