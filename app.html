@@ -9,8 +9,10 @@
     <script type="text/javascript" src="plots/plots.js" defer></script>
     <script type="text/javascript" src="plots/composite.js" defer></script>
     <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/github-ribbon.css" rel="stylesheet">
     </head>
     <body>
+        <a class="github-fork-ribbon" href="https://github.com/lernerlombrozo/numerical-methods-final-project" target="_blank" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
         <div id="app">
             <div class="input_field">
                 <label>Initial point (x0)</label>
@@ -34,7 +36,7 @@
             </div>
             <div class="input_field">
                 <label>Function (f(x))</label>
-                <input type="text" v-model="toEvaluate" placeholder="function">
+                <input type="text" v-model="toEvaluate" placeholder="function f(x) use a JavaScript command">
             </div>
             <button v-on:click="makeCharts()">Calculate</button>
             <div class="centered">

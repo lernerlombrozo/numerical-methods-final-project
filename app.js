@@ -2,11 +2,11 @@ let x0 = 0; // initial x
 let xf = 4; // final x
 let n = 2; // for composite plots
 let h = ((xf-x0)/n); // this h is the distance between two points.
-let degree1=2;
-let degree2=1;
+let degree1=1;
+let degree2=2;
 const smallH = 0.01; // this h is to make plot continuous.
 const xT="x";
-var yT= "f(x)";
+var yT= "f(x)=exp(x)";
 let toEvaluate="";
 
 function toSolve(x){
