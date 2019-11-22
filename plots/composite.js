@@ -21,7 +21,7 @@ function makeCompositePlot(){
     var data = google.visualization.arrayToDataTable(table);
 
     var options = {
-        title: `n=${degree1}`,
+        title: `Composite Newton-Cotes n=${degree1}`,
         hAxis: {title: xT,  titleTextStyle: {color: '#333'}},
         vAxis: {title: yT, minValue: 0}
     };
@@ -45,7 +45,7 @@ function makeCompositePlot2(){
     var data = google.visualization.arrayToDataTable(table);
 
     var options = {
-        title: `n=${degree2}`,
+        title: `Composite Newton-Cotes n=${degree2}`,
         hAxis: {title: xT,  titleTextStyle: {color: '#333'}},
         vAxis: {title: yT, minValue: 0}
     };
