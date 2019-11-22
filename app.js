@@ -1,11 +1,14 @@
-let x0 = 1; // initial x
-let xf = 3; // final x
+let x0 = 0; // initial x
+let xf = 1; // final x
 let n = 2; // for composite plots
 let h = ((xf-x0)/n); // this h is the distance between two points.
 let degree1=2;
 let degree2=3;
 const smallH = 0.01; // this h is to make plot continuous.
 const xT="x";
+// let yT= "f(x)=sqrt(1-x^2)";
+let analyticalSolution;
+// var yT= "f(x)=sin(x)";
 var yT= "f(x)=x^6 - x^2 sin(2x)";
 let toEvaluate="";
 
@@ -34,6 +37,7 @@ var app = new Vue({
       table2:null,
       table3:null,
       tableComparison:null,
+      analyticalSolution:null,
     },
     methods: {
         makeTables: function(){
@@ -52,6 +56,7 @@ var app = new Vue({
             degree2=+this.degree2;
             this.message = "";
             toEvaluate=this.toEvaluate;
+            analyticalSolution=this.analyticalSolution
             if(toEvaluate) yT = "f(x)="+toEvaluate;
             if(n <1){
               this.message="n must be a positive integer";

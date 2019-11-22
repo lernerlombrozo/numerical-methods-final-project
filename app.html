@@ -40,6 +40,10 @@
                 <label>Function (f(x))</label>
                 <input type="text" v-model="toEvaluate" placeholder="function f(x) use a JavaScript command">
             </div>
+            <div class="input_field">
+                <label>Analytical solution</label>
+                <input type="text" v-model="analyticalSolution" placeholder="Analytical solution to the integral of f(x) from x0 to xf">
+            </div>
             <button v-on:click="makeCharts()">Calculate</button>
             <div class="centered">
                 {{toEvaluate}}
