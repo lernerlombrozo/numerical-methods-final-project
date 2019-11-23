@@ -1,7 +1,9 @@
-function efficientTable(x0,xf,smallH,xTitle,yTitle,tTitle,sTitle){
+function efficientTable(x0,xf,xTitle,yTitle,tTitle,sTitle){
+    let smallH = (xf-x0)/smallN;
     var table =[[xTitle, yTitle, tTitle, sTitle]];
-    for(let i = x0;i<=xf+smallH;i=i+smallH){
-        table.push([i,toSolve(i.toPrecision(7)),lagrangeFromDegree(i,x0,xf,degree1),lagrangeFromDegree(i,x0,xf,degree2)])
+    for(let i = 0;i<=smallN;i++){
+        let j = x0+i*smallH;
+        table.push([j,toSolve(j),lagrangeFromDegree(j,x0,xf,degree1),lagrangeFromDegree(j,x0,xf,degree2)])
     }
     return table;
 }
@@ -11,8 +13,8 @@ function makeSimplePlot(){
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
-    var table = efficientTable(x0,xf,smallH,xT,yT,`n=${degree1}`,`n=${degree2}`)
-    // console.log(table);
+    var table = efficientTable(x0,xf,xT,yT,`n=${degree1}`,`n=${degree2}`)
+    console.log(table);
     
     function drawChart() {
         var data = google.visualization.arrayToDataTable(table);

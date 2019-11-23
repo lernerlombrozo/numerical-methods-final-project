@@ -1,9 +1,7 @@
 function makeComparissonChart(x0,xf,h){
-    console.log('here')
     let ref;
     if(analyticalSolution) ref = analyticalSolution
     else ref= compositeSimpson(x0,xf,0.00001);
-    console.log('here')
     const trap = trapezoid(x0,xf);
     const simp = simpson(x0,xf);
     const simp38 = simpson38(x0,xf);
