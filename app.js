@@ -5,21 +5,19 @@ let degree1=2;
 let degree2=3;
 const smallN = 100; // this h is to make plot continuous.
 const xT="x";
-let yT= "f(x)=sqrt(1-x^2)";
 let analyticalSolution;
+// let yT= "f(x)=sqrt(1-x^2)";
 // var yT= "f(x)=sin(x)";
-// var yT= "f(x)=x^6 - x^2 sin(2x)";
+var yT= "f(x)=x^6 - x^2 sin(2x)";
 let toEvaluate="";
 
 function toSolve(x){
   if(toEvaluate){
     return(eval(toEvaluate)); 
   }
-  return Math.sqrt(1-x**2) // Circle centered in (0,0) with radius 1. Can be evaluated from -1 to 1;
-  // return Math.exp(x);
-  // return x**3 + 3*x**2;
-  // return Math.sin(x)
-  // return x**6 - x**2 * Math.sin(2*x)
+  // return Math.sqrt(1-x**2); // Circle centered in (0,0) with radius 1. Can be evaluated from -1 to 1;
+  // return Math.sin(x);
+  return x**6 - x**2 * Math.sin(2*x);
 }
 
 var app = new Vue({
