@@ -8,7 +8,8 @@ const xT="x";
 let analyticalSolution;
 // let yT= "f(x)=sqrt(1-x^2)";
 // var yT= "f(x)=sin(x)";
-var yT= "f(x)=x^6 - x^2 sin(2x)";
+// var yT= "f(x)=x^6 - x^2 sin(2x)";
+var yT= "f(x)=cos(2x)/exp(x)";
 let toEvaluate="";
 
 function toSolve(x){
@@ -17,7 +18,8 @@ function toSolve(x){
   }
   // return Math.sqrt(1-x**2); // Circle centered in (0,0) with radius 1. Can be evaluated from -1 to 1;
   // return Math.sin(x);
-  return x**6 - x**2 * Math.sin(2*x);
+  // return x**6 - x**2 * Math.sin(2*x);
+  return Math.cos(2*x)/Math.exp(x);
 }
 
 var app = new Vue({

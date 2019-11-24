@@ -32,6 +32,17 @@ function compositeTrapezoid(x0,xf,n){
     return(integral);
 }
 
+function efficientCompositeTrapezoid(x0,xf,n){
+    const h = (xf-x0)/n;
+    let integral = toSolve(x0);
+    for (let i=1; i<n; i++){
+        integral = integral + 2 * toSolve(x0+i*h);
+    }
+    integral += toSolve(xf);
+    integral=integral * h * 0.5;
+    return(integral);
+}
+
 function compositeSimpson(x0,xf,n){
     const h = (xf-x0)/n;
     let integral=0;

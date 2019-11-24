@@ -1,19 +1,13 @@
-function efficientTable(x0,xf,xTitle,yTitle,tTitle,sTitle){
-    let smallH = (xf-x0)/smallN;
-    var table =[[xTitle, yTitle, tTitle, sTitle]];
-    for(let i = 0;i<=smallN;i++){
-        let j = x0+i*smallH;
-        table.push([j,toSolve(j),lagrangeFromDegree(j,x0,xf,degree1),lagrangeFromDegree(j,x0,xf,degree2)])
-    }
-    return table;
+function getAdaptiveTable(x0,xf,tol,level,maxLevel,xTitle,yTitle,pTitle){
+    let rawData= adaptiveTable(x0,xf,tol,level,maxLevel,[]);
 }
 
-let simpleChart;
-function makeSimplePlot(){
+let adaptiveChart;
+function makeAdaptivePlot(){
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     
-    var table = efficientTable(x0,xf,xT,yT,`n=${degree1}`,`n=${degree2}`)
+    var table = getAdaptiveTable(x0,xf,xT,yT,`n=${degree1}`,`n=${degree2}`)
     // console.log(table);
     
     function drawChart() {
@@ -32,4 +26,4 @@ function makeSimplePlot(){
     }
 }
 
-makeSimplePlot()
+makeAdaptivePlot()
