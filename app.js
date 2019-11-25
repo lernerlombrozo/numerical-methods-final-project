@@ -8,6 +8,7 @@ const xT="x";
 let analyticalSolution;
 let tol = 0.0001;
 let maxLevel = 1000;
+// let yT= "f(x)=2";
 // let yT= "f(x)=x";
 let yT= "f(x)=sqrt(1-x^2)";
 // var yT= "f(x)=sin(x)";
@@ -20,7 +21,8 @@ function toSolve(x){
   if(toEvaluate){
     return(eval(toEvaluate)); 
   }
-  // return(2*x)
+  // return 2
+  // return(x)
   return Math.sqrt(1-x**2); // Circle centered in (0,0) with radius 1. Can be evaluated from -1 to 1;
   // return Math.sin(x);
   // return x**6 - x**2 * Math.sin(2*x);
