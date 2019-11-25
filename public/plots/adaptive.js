@@ -1,8 +1,24 @@
 function getAdaptiveTable(a,b,tol,level,maxLevel,centers,xTitle,yTitle){
     let rawData = adaptiveTable(a,b,tol,level,maxLevel,centers);
-    let minData=rawData.centers.sort(function(a, b) { 
+    let orderedCenters=rawData.centers.sort(function(a, b) { 
         return a[1] > b[1] ? 1 : -1;
     });
+    minData=[];
+    let x= a;
+    let maxInRange=orderedCenters[0];
+    for(let i=1;i<orderedCenters.length;i++){
+        if(orderedCenters[i][1]==maxInRange[1]){
+            if(orderedCenters[i][0]>maxInRange[0]){
+                maxInRange = orderedCenters[i]; 
+            }
+        } else{
+            minData.push(maxInRange);
+            maxInRange =orderedCenters[i]; 
+            if(i==orderedCenters.length-1){
+                minData.push(maxInRange);  
+            }
+        } 
+    }
     let maxLevelObtained=0;
     let minLevelObtained=maxLevel;
     for(let i = 0; i< minData.length;i++){

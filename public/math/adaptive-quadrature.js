@@ -50,13 +50,10 @@ function adaptiveQuadrature(a,b,tol,level,maxLevel){
     return S
 }
 
-function getSimilarComposite(){
-
-}
-
 function adaptiveTable(a,b,tol,level,maxLevel,centers){
     level++;
     let c=(a+b)/2;
+    centers.push([level,a,b]);
     let S1 = simpson(a,b);
     let S2 = simpson(a,c) + simpson(c,b);
     if (level >= maxLevel){
@@ -65,7 +62,6 @@ function adaptiveTable(a,b,tol,level,maxLevel,centers){
         return
     } else {
         if(Math.abs(S2-S1)<15*tol){
-            centers.push([level,a,b]);
             return {answer: S2+(S2-S1)/15, centers}
         }
         else{

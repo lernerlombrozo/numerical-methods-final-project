@@ -1,0 +1,105 @@
+<html>
+    <head>
+    <title>Math 535 project</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="app.js" defer></script>
+    <script type="text/javascript" src="math/adaptive-quadrature.js" defer></script>
+    <script type="text/javascript" src="math/compare.js" defer></script>
+    <script type="text/javascript" src="math/newton-cotes.js" defer></script>
+    <script type="text/javascript" src="math/lagrange-polynomial.js" defer></script>
+    <script type="text/javascript" src="math/gaussian-quadrature.js" defer></script>
+    <script type="text/javascript" src="plots/plots.js" defer></script>
+    <script type="text/javascript" src="plots/composite.js" defer></script>
+    <script type="text/javascript" src="plots/adaptive.js" defer></script>
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/github-ribbon.css" rel="stylesheet">
+    </head>
+    <body>
+        <a class="github-fork-ribbon" href="https://github.com/lernerlombrozo/numerical-methods-final-project" target="_blank" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+        <div id="app">
+            <div class="input_field">
+                <label>Initial point (x0)</label>
+                <input type="text" v-model="x0" placeholder="x0">
+            </div>
+            <div class="input_field">
+                <label>Final point (xf)</label>
+                <input type="text" v-model="xf" placeholder="xf">
+            </div>
+            <div class="input_field">
+                <label>Division Amount (composite)</label>
+                <input type="text" v-model="n" placeholder="n">
+            </div>
+            <div class="input_field">
+                <label>Degree of 1st plot (n)</label>
+                <input type="text" v-model="degree1" placeholder="degree of first plot">
+            </div>
+            <div class="input_field">
+                <label>Degree of 2nd plot (n)</label>
+                <input type="text" v-model="degree2" placeholder="degree of second plot">
+            </div>
+            <div class="input_field">
+                <label>Function (f(x))</label>
+                <input type="text" v-model="toEvaluate" placeholder="function f(x) use a JavaScript command">
+            </div>
+            <div class="input_field">
+                <label>Analytical solution</label>
+                <input type="text" v-model="analyticalSolution" placeholder="Analytical solution to the integral of f(x) from x0 to xf">
+            </div>
+            <div class="input_field">
+                <label>Tolerable error (ε)</label>
+                <input type="text" v-model="tol" placeholder="Tolerable error for adaptive cuadrature">
+            </div>
+            <div class="input_field">
+                <label>Maximum Level</label>
+                <input type="text" v-model="maxLevel" placeholder="Maximum level for adaptive cuadrature">
+            </div>
+            <button v-on:click="makeCharts()">Calculate</button>
+            <div class="centered">
+                {{toEvaluate}}
+            </div>
+            <div class="chart_container">
+                <div id="chart_div" style="width: 100%; height: 1000px;"></div>
+                <div id="composite_chart_div" style="width: 100%; height: 1000px;"></div>
+                <div id="composite_2_chart_div" style="width: 100%; height: 1000px;"></div>
+                <div id="adaptive_chart_div" style="width: 100%; height: 1000px;"></div>
+            </div>
+            <button v-if="!table1" v-on:click="makeTables()">Show tables</button>
+            <div class="table-container" v-if="tableComparison">
+                <table style="width:100%">
+                    <caption>Newton Cote, Gaussian Quadrature Comparisson</caption>
+                    <tr v-for="(row, index) in tableComparison">
+                        <td v-for="(content, index) in row">{{content}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-container" v-if="table1">
+                <table style="width:100%">
+                    <caption>n=1</caption>
+                    <tr v-for="(row, index) in table1">
+                        <td v-for="(content, index) in row">{{content}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-container" v-if="table2">
+                <table style="width:100%">
+                    <caption>n=2</caption>
+                    <tr v-for="(row, index) in table2">
+                        <td v-for="(content, index) in row">{{content}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-container" v-if="table3">
+                <table style="width:100%">
+                    <caption>n=3</caption>
+                    <tr v-for="(row, index) in table3">
+                        <td v-for="(content, index) in row">{{content}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="alert" v-if="message">
+                    {{ message }}
+            </div>
+        </div>
+    </body>
+</html>
