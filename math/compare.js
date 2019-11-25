@@ -14,7 +14,7 @@ function makeComparissonChart(x0,xf,n){
     const cSimp38 = compositeSimpson38(x0,xf,n)
     const GQ2 = gaussianQuadrature(x0,xf,2)
     const GQ3 = gaussianQuadrature(x0,xf,3)
-    const adapt = adaptiveQuadrature(x0,xf,tol,0,maxLevel)
+    const adapt = adaptiveQuadrature(x0,xf,tol,maxLevel)
     const table = [
         ['Method',`integral from ${x0} to ${xf}`,'error'],
         [`Reference: ${analyticalSolution? 'analytical solution': '(composite n=2 divisions=100000)' }`, ref,null],
