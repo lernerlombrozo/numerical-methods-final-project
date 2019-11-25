@@ -11,6 +11,7 @@
     <script type="text/javascript" src="math/gaussian-quadrature.js" defer></script>
     <script type="text/javascript" src="plots/plots.js" defer></script>
     <script type="text/javascript" src="plots/composite.js" defer></script>
+    <script type="text/javascript" src="plots/adaptive.js" defer></script>
     <link href="styles/main.css" rel="stylesheet">
     <link href="styles/github-ribbon.css" rel="stylesheet">
     </head>
@@ -45,6 +46,14 @@
                 <label>Analytical solution</label>
                 <input type="text" v-model="analyticalSolution" placeholder="Analytical solution to the integral of f(x) from x0 to xf">
             </div>
+            <div class="input_field">
+                <label>Tolerable error (ε)</label>
+                <input type="text" v-model="tol" placeholder="Tolerable error for adaptive cuadrature">
+            </div>
+            <div class="input_field">
+                <label>Maximum Level</label>
+                <input type="text" v-model="maxLevel" placeholder="Maximum level for adaptive cuadrature">
+            </div>
             <button v-on:click="makeCharts()">Calculate</button>
             <div class="centered">
                 {{toEvaluate}}
@@ -53,6 +62,7 @@
                 <div id="chart_div" style="width: 100%; height: 1000px;"></div>
                 <div id="composite_chart_div" style="width: 100%; height: 1000px;"></div>
                 <div id="composite_2_chart_div" style="width: 100%; height: 1000px;"></div>
+                <div id="adaptive_chart_div" style="width: 100%; height: 1000px;"></div>
             </div>
             <button v-if="!table1" v-on:click="makeTables()">Show tables</button>
             <div class="table-container" v-if="tableComparison">

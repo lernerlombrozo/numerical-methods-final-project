@@ -1,11 +1,13 @@
 let x0 = 0; // initial x
-let xf = 1; // final x
+let xf = 1.25*Math.PI; // final x
 let n = 2; // for composite plots
 let degree1=2;
 let degree2=3;
 const smallN = 100; // this h is to make plot continuous.
 const xT="x";
 let analyticalSolution;
+let tol = 0.0001;
+let maxLevel = 10;
 // let yT= "f(x)=sqrt(1-x^2)";
 // var yT= "f(x)=sin(x)";
 // var yT= "f(x)=x^6 - x^2 sin(2x)";
@@ -37,6 +39,8 @@ var app = new Vue({
       table3:null,
       tableComparison:null,
       analyticalSolution:null,
+      tol:tol,
+      maxLevel:maxLevel,
     },
     methods: {
         makeTables: function(){
@@ -54,7 +58,9 @@ var app = new Vue({
             degree2=+this.degree2;
             this.message = "";
             toEvaluate=this.toEvaluate;
-            analyticalSolution=this.analyticalSolution
+            analyticalSolution=this.analyticalSolution;
+            tol=this.tol;
+            maxLevel=this.maxLevel;
             if(toEvaluate) yT = "f(x)="+toEvaluate;
             if(n <1){
               this.message="n must be a positive integer";
@@ -63,6 +69,7 @@ var app = new Vue({
             makeCompositePlot();
             makeCompositePlot2();
             makeSimplePlot();
+            makeAdaptivePlot();
             this.makeTables();
         },
       }

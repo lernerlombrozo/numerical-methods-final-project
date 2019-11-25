@@ -43,7 +43,7 @@ function makeCompositePlot2(){
     google.charts.setOnLoadCallback(drawChart);
 
     var table = makeCompositeTable(x0,xf,n,degree2,xT,yT,`n=${degree2}`)
-    // console.log(table);
+    console.log(table);
 
     function drawChart() {
     var data = google.visualization.arrayToDataTable(table);
