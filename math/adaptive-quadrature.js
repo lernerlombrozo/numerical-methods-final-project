@@ -18,13 +18,16 @@ function adaptive(a,b,tol,level,maxLevel){
 }
 
 function adaptiveTable(a,b,tol,level,maxLevel,centers){
+    console.log(level,maxLevel)
     level++;
     let c=(a+b)/2;
     centers.push([level,a,b]);
     let S1 = simpson(a,b);
     let S2 = simpson(a,c) + simpson(c,b);
     if (level >= maxLevel){
-        throw new Error('maximum level reached');
+        console.warn('maximum level reached');
+        alert('maximum level reached');
+        return
     } else {
         if(Math.abs(S2-S1)<15*tol){
             return {answer: S2+(S2-S1)/15, centers}

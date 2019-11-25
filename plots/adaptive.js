@@ -29,13 +29,10 @@ function getAdaptiveTable(a,b,tol,level,maxLevel,centers,xTitle,yTitle){
             minLevelObtained=minData[i][0]
         }
     }
-    console.log({maxLevelObtained,minLevelObtained})
     let table =[[xTitle, yTitle]];
     for (let w=minLevelObtained; w<=maxLevelObtained;w++){
-        console.log(w)
-        table[0].push(`h/${w}`);
+        table[0].push(`h/${2**w}`);
     };
-    console.log({table})
     for(let i=0;i<minData.length;i++){
         let xa = minData[i][1]
         let smallH = (minData[i][2]-minData[i][1])/smallN;
@@ -61,15 +58,8 @@ function makeAdaptivePlot(){
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     
-    var table = getAdaptiveTable(x0,xf,tol,0, 10, [],xT, yT,`n=${degree1}`,`n=2, ε=${tol}, max level=${maxLevel}`)
-    // table=[
-    //     ['a','b','c'],
-    //     [1,2,3],
-    //     [1,2,3],
-    //     [2,3,4],
-    //     [3,4,5]
-    // ]
-    console.log(table);
+    var table = getAdaptiveTable(x0,xf,tol,0, maxLevel, [],xT, yT,`n=${degree1}`,`n=2, ε=${tol}, max level=${maxLevel}`)
+    // console.log(table);
     
     function drawChart() {
         var data = google.visualization.arrayToDataTable(table);

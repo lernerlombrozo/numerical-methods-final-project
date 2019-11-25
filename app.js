@@ -59,8 +59,8 @@ var app = new Vue({
             this.message = "";
             toEvaluate=this.toEvaluate;
             analyticalSolution=this.analyticalSolution;
-            tol=this.tol;
-            maxLevel=this.maxLevel;
+            tol=+this.tol;
+            maxLevel=+this.maxLevel;
             if(toEvaluate) yT = "f(x)="+toEvaluate;
             if(n <1){
               this.message="n must be a positive integer";
