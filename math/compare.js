@@ -14,6 +14,7 @@ function makeComparissonChart(x0,xf,n){
     const cSimp38 = compositeSimpson38(x0,xf,n)
     const GQ2 = gaussianQuadrature(x0,xf,2)
     const GQ3 = gaussianQuadrature(x0,xf,3)
+    const adapt = adaptiveQuadrature(x0,xf,tol,0,maxLevel)
     const table = [
         ['Method',`integral from ${x0} to ${xf}`,'error'],
         [`Reference: ${analyticalSolution? 'analytical solution': '(composite n=2 divisions=100000)' }`, ref,null],
@@ -24,7 +25,8 @@ function makeComparissonChart(x0,xf,n){
         [`Composite Newton-Cotes n=2, divisions=${n}`, cSimp, Math.abs(ref-cSimp)],
         [`Composite Newton-Cotes n=3, divisions=${n}`,cSimp38 ,Math.abs(ref-cSimp38)],
         ["Gaussian Quadrature n=2", GQ2,Math.abs(ref-GQ2)],
-        ["Gaussian Quadrature n=3", GQ3,Math.abs(ref-GQ3)]
+        ["Gaussian Quadrature n=3", GQ3,Math.abs(ref-GQ3)],
+        [`Adaptive Quadrature n=2, ε=${tol}`, adapt,Math.abs(ref-adapt)]
     ]
     return table;
 }
